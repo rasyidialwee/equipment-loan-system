@@ -32,86 +32,26 @@ require_once("functions/ftool.php");
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
        	<?php require_once("templates/topbar.php") ?>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
         <?php require_once("templates/sidebar.php") ?>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
              <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Tools</h4>
+                        <h4 class="page-title">Equipment</h4>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Sales Cards  -->
-                <!-- ============================================================== -->
                 <div class="row">
-                <!-- Column -->
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Add New Tool</h4>
-                                <form class="form-horizontal" method="post">
-                                    <div class="form-group row">
-										<div class="form-group col-md-4">
-											<label>Tool Name :</label>
-											<input type="text" name="tlName" class="form-control" placeholder="Equipment Name" />
-										</div>
-										<div class="form-group col-md-4">
-											<label>Tool Variation :</label>
-											<input type="text" name="tlVariation" class="form-control" placeholder="eg. Colour / Size" />
-										</div>
-										<div class="form-group col-md-4">
-											<label>Tool Quantity :</label>
-											<input type="number" name="tlQuantity" class="form-control" placeholder="Total Quantity of Equipment" />
-										</div>
-										
-                                        <button class="btn btn-large btn-primary" style="margin-left: 10px;" name="btnAddTool">Add Equipment</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-					
-					<div class="col-md-12">
+					<div class="col-md-8">
 						<div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Equipment List</h5>
@@ -121,8 +61,8 @@ require_once("functions/ftool.php");
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Variation</th>
                                                 <th>Quantity</th>
+                                                <th>Store</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -133,10 +73,16 @@ require_once("functions/ftool.php");
 											?>
 											<tr>
 												<td align="center"><?= $fetchTool["tlID"] ?></td>
-												<td><?= $fetchTool["tlName"] ?></td>
-												<td><?= $fetchTool["tlVariation"] ?></td>
+												<td>
+                                                    <?= $fetchTool["tlName"] ?><br>
+                                                    <b>Variation : </b><?= $fetchTool["tlVariation"] ?>
+                                                </td>
 												<td><?= $fetchTool["tlQuantity"] ?></td>
-												<td><a href="?delete=<?=$fetchTool["tlID"]?>"><button class="btn btn-danger">DELETE</button></a></td>
+                                                <td><?= $fetchTool["tlStore"] ?></td>
+												<td>
+                                                    <a href="updateEquipment.php?id=<?=$fetchTool["tlID"]?>" class="btn btn-block btn-success">UPDATE</a>
+                                                    <a href="?delete=<?=$fetchTool["tlID"]?>" class="btn btn-block btn-danger">DELETE</a>
+                                                </td>
 											</tr>
 											<?php
 											}
@@ -146,8 +92,8 @@ require_once("functions/ftool.php");
                                             <tr>
                                                	<th>ID</th>
                                                 <th>Name</th>
-                                                <th>Variation</th>
                                                 <th>Quantity</th>
+                                                <th>Store</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -157,6 +103,36 @@ require_once("functions/ftool.php");
                             </div>
                         </div>
 					</div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add New Equipment</h4>
+                                <form method="post">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Tool Name :</label>
+                                            <input type="text" name="tlName" class="form-control" placeholder="Equipment Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tool Variation :</label>
+                                            <input type="text" name="tlVariation" class="form-control" placeholder="eg. Colour / Size" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tool Quantity :</label>
+                                            <input type="number" name="tlQuantity" class="form-control" placeholder="Total Quantity of Equipment" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tool Store :</label>
+                                            <input type="text" name="tlStore" class="form-control" placeholder="Store Location" />
+                                        </div>
+                                        
+                                        <button class="btn btn-large btn-primary" style="margin-left: 10px;" name="btnAddTool">Add Equipment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

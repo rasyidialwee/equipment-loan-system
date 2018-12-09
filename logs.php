@@ -120,7 +120,7 @@ require_once("assets/session-handler.php");
                                         </tfoot>
                                     </table>
                                 </div>
-
+                                <button class="btn btn-success" onclick="printLog()">Print</button>
                             </div>
                         </div>
 					</div>
@@ -165,11 +165,32 @@ require_once("assets/session-handler.php");
     <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
 		
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    
     <script>
-        //***********************************//
-        // For select 2
-        //***********************************//
+        $('#zero_config').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            { extend: 'print', text: 'Print Log', className: 'btn btn-success' }
+        ]
+    } );
+        /*
          $('#zero_config').DataTable();
+
+         function printLog(){
+            $('#zero_config').DataTable({
+                dom: 'Bfrtip'
+            });
+         }
+         
+         $('#zero_config').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'print'
+            ]
+        });
+        */
     </script>
 </body>
 

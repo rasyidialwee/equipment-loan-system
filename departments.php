@@ -2,7 +2,7 @@
 session_start();
 require_once("assets/connection.php");
 require_once("assets/session-handler.php");
-require_once("functions/fadmin.php");
+require_once("functions/fdepartment.php");
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -54,57 +54,25 @@ require_once("functions/fadmin.php");
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Administrator List</h5>
+                                <h5 class="card-title">Department List</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Contact</th>
+                                                <th>Abbreviate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $getAdminList = mysqli_query($conn,"SELECT admID, admName, admEmail, admPhone, admDepartment FROM admins");
-                                            $getAdminListResult = mysqli_num_rows($getAdminList);
-                                            while($fetchAdmin = mysqli_fetch_assoc($getAdminList)){
+                                            $getDepartmentList = mysqli_query($conn,"SELECT * FROM departments");
+                                            while($fetchDepartmentList = mysqli_fetch_assoc($getDepartmentList)){
                                             ?>
                                             <tr>
-                                                <td align="center"><?= $fetchAdmin["admID"] ?></td>
-                                                <td><?= $fetchAdmin["admName"] ?></td>
-                                                <td>
-                                                    <?= $fetchAdmin["admEmail"] ?><br>
-                                                    <?= $fetchAdmin["admPhone"] ?><br>
-                                                    <?= $fetchAdmin["admDepartment"] ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if ($fetchAdmin["admDepartment"] === "Creator" || $getAdminListResult === 1) {
-                                                        if ($fetchAdmin["admID"] === $userID) {
-                                                    ?>
-                                                    <a href="updateAdmin.php?id=<?= $fetchAdmin['admID'] ?>" class="btn btn-block btn-success">UPDATE</a>
-                                                    <?
-                                                        }
-                                                    ?>
-                                                    
-                                                    <!-- hide delete button -->
-                                                    <?php
-                                                    }else{
-                                                        if ($fetchAdmin["admID"] === $userID){
-                                                    ?>
-                                                    <a href="updateAdmin.php?id=<?= $fetchAdmin['admID'] ?>" class="btn btn-block btn-success">UPDATE</a>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                    
-                                                    <a href="?delete=<?= $fetchAdmin['admID'] ?>"><button class="btn btn-block btn-danger">DELETE</button></a>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                    
-                                                </td>
+                                                <td align="center"><?= $fetchDepartmentList["dprtName"] ?></td>
+                                                <td><?= $fetchDepartmentList["dprtAbbr"] ?></td>
+                                                <td><a href="?delete=<?=$fetchDepartmentList["dprtID"]?>"><button class="btn btn-danger">DELETE</button></a></td>
                                             </tr>
                                             <?php
                                             }
@@ -112,9 +80,8 @@ require_once("functions/fadmin.php");
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Abbreviate</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
@@ -127,48 +94,24 @@ require_once("functions/fadmin.php");
                     <div class="col-md-3">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Create Administrator</h4>
+                                <h4 class="card-title">Add Department </h4>
                                 <form method="post">
-                                    <div class="form-group">
                                         <div class="form-group">
                                             <label>Name :</label>
-                                            <input type="text" name="admName" class="form-control" placeholder="Full Name" required/>
+                                            <input type="text" name="dprtName" class="form-control" placeholder="Department  Name" required/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Password :</label>
-                                            <input type="password" name="admPwd" class="form-control" placeholder="Password" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email :</label>
-                                            <input type="email" name="admEmail" class="form-control" placeholder="Please insert valid email address" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone :</label>
-                                            <input type="tel" name="admPhone" class="form-control" placeholder="+60123456789" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Department :</label>
-
-                                            <select name="admDepartment" class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                                <option>Select</option>
-                                                <?php
-                                                    $getDepartmentList = mysqli_query($conn,"SELECT * FROM departments");
-                                                    while ($fetchDepartmentList = mysqli_fetch_assoc($getDepartmentList)) {
-                                                ?>
-                                                    <option value="<?= $fetchDepartmentList["dprtAbbr"] ?>" ><?= $fetchDepartmentList["dprtName"] ?> (<?= $fetchDepartmentList["dprtAbbr"] ?>)</option>
-                                                <?php
-                                                    }
-                                                ?>
-                                            </select>
+                                            <label>Abbreviate :</label>
+                                            <input type="text" name="dprtAbbr" class="form-control" placeholder="Department/Faculty Shortform" required/>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-large btn-primary" style="margin-left: 10px;" name="btnAddAdmin">Create</button>
-                                    </div>
+                                        <button type="submit" class="btn btn-primary" style="margin-left: 10px;" name="btnAddDepartment">Add</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
             <?php require_once("templates/footer.php") ?>
         </div>
         <!-- ============================================================== -->
@@ -201,8 +144,6 @@ require_once("functions/fadmin.php");
     <script>
         //***********************************//
         // For select 2
-        //this is the code for select department
-        $(".select2").select2();
         //***********************************//
          $('#zero_config').DataTable();
     </script>

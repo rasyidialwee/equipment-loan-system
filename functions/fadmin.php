@@ -4,16 +4,17 @@ if(isset($_POST["btnAddAdmin"])){
 	$admPwd = mysqli_real_escape_string($conn, $_POST["admPwd"]);
 	$admEmail = mysqli_real_escape_string($conn, $_POST["admEmail"]);
 	$admPhone = mysqli_real_escape_string($conn, $_POST["admPhone"]);
+	$admDepartment = mysqli_real_escape_string($conn, $_POST["admDepartment"]);
 
 	//check if admin exist
 	$checkAdmin = mysqli_query($conn, "SELECT admEmail FROM admins WHERE admEmail = '{$admEmail}' ");
 	$checkAdminResult = mysqli_num_rows($checkAdmin);
 
-	if($checkAdminResult === 1){
+	if($checkAdminResult === 1){//check if admin with user is existed
 		echo "<script>alert('Sorry admin with this email is already existed. Please use another email')</script>";
 	}else{
 		$hashPwd = password_hash($admPwd, PASSWORD_BCRYPT);
-		$iadm = mysqli_query($conn, "INSERT INTO admins (admName, admPwd, admEmail, admPhone) VALUES ('{$admName}', '{$hashPwd}', '{$admEmail}', '{$admPhone}')");
+		$iadm = mysqli_query($conn, "INSERT INTO admins (admName, admPwd, admEmail, admPhone, admDepartment) VALUES ('{$admName}', '{$hashPwd}', '{$admEmail}', '{$admPhone}', '{$admDepartment}') ");
 
 		if($iadm){
 			//log

@@ -83,10 +83,10 @@ require_once("functions/findex.php");
                                                         <select name="lnTool" class="select2 form-control custom-select" id="selectTool" style="width: 100%; height:36px;">
                                                             <option>Select</option>
                                                             <?php
-                                                                $getToolList = mysqli_query($conn,"SELECT tlID, tlName, tlVariation, tlQuantity FROM tools");
+                                                                $getToolList = mysqli_query($conn,"SELECT tlID, tlName, tlVariation, tlQuantity, tlAvailable FROM tools");
                                                                 while ($fetchToolList = mysqli_fetch_assoc($getToolList)) {
                                                             ?>
-                                                                <option value="<?= $fetchToolList["tlID"] ?>" data-max="<?= $fetchToolList["tlQuantity"] ?>"><?= $fetchToolList["tlName"] ?> - <?= $fetchToolList["tlVariation"] ?></option>
+                                                                <option value="<?= $fetchToolList["tlID"] ?>" data-max="<?= $fetchToolList["tlAvailable"] ?>"><?= $fetchToolList["tlName"] ?> - <?= $fetchToolList["tlVariation"] ?></option>
                                                             <?php
                                                                 }
                                                             ?>
@@ -121,16 +121,16 @@ require_once("functions/findex.php");
                                         <input class="form-control" type="text" name="usrIC" placeholder="IC number without '-'" required />
                                         <input class="form-control" type="email" name="usrEmail" placeholder="Email" required />
                                         <input class="form-control" type="tel" name="usrPhone" placeholder="0123456789" required />
-                                        <select class="select2 form-control custom-select" name="usrFac" style="width: 100%; height:36px;">
-                                            <option value="FST">Faculty of Science and Technology</option>
-                                            <option value="FPQS">Faculty of Quranic and Sunnah Studies</option>
-                                            <option value="FKP">Faculty of Leadership and Management</option>
-                                            <option value="FSU">Faculty of Syariah and Law</option>
-                                            <option value="FEM">Faculty of Economics and Muamalat</option>
-                                            <option value="FMED">Faculty of Medicine and Health Sciences</option>
-                                            <option value="FDEN">Faculty of Dentistry</option>
-                                            <option value="FPBU">Faculty of Major Languages Studies</option>
-                                            <option value="FKAB">Faculty of Engineering and Built Environment</option>
+                                        <select name="usrFac" class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                            <option>Select</option>
+                                            <?php
+                                                $getDepartmentList = mysqli_query($conn,"SELECT * FROM departments");
+                                                while ($fetchDepartmentList = mysqli_fetch_assoc($getDepartmentList)) {
+                                            ?>
+                                                <option value="<?= $fetchDepartmentList["dprtAbbr"] ?>" ><?= $fetchDepartmentList["dprtName"] ?> (<?= $fetchDepartmentList["dprtAbbr"] ?>)</option>
+                                            <?php
+                                                }
+                                            ?>
                                         </select>
                                         <input class="form-control" type="text" name="usrCourse" placeholder="Course Name" required />
                                         <button type="submit" class="btn btn-success" name="btnAddUser">Add User</button>
@@ -176,9 +176,7 @@ require_once("functions/findex.php");
                         </div>
                     </div>
                 </div>
-            <footer class="footer text-center">
-                All Rights Reserved by Skyrem Brilliant Services. Designed and Developed by <a href="https://wrappixel.com">Rasyidi Alwee</a>.
-            </footer>
+            <?php require_once("templates/footer.php") ?>
         </div>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
