@@ -2,7 +2,6 @@
 session_start();
 require_once("assets/connection.php");
 require_once("assets/session-handler.php");
-//require_once("functions/ftool.php");
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -32,40 +31,17 @@ require_once("assets/session-handler.php");
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
        	<?php require_once("templates/topbar.php") ?>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
         <?php require_once("templates/sidebar.php") ?>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
              <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
@@ -73,12 +49,6 @@ require_once("assets/session-handler.php");
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
                 <div class="row">
 					<div class="col-md-12">
@@ -125,29 +95,9 @@ require_once("assets/session-handler.php");
                         </div>
 					</div>
                 </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Skyrem Brilliant Services. Designed and Developed by <a href="https://wrappixel.com">Rasyidi Alwee</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+            <?php require_once("templates/footer.php") ?>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -160,9 +110,6 @@ require_once("assets/session-handler.php");
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
 		
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>

@@ -72,7 +72,7 @@ require_once("functions/fdepartment.php");
                                             <tr>
                                                 <td align="center"><?= $fetchDepartmentList["dprtName"] ?></td>
                                                 <td><?= $fetchDepartmentList["dprtAbbr"] ?></td>
-                                                <td><a href="?delete=<?=$fetchDepartmentList["dprtID"]?>"><button class="btn btn-danger">DELETE</button></a></td>
+                                                <td><a href="?delete=<?=$fetchDepartmentList["dprtID"]?>" class="btn btn-block btn-danger">DELETE</a></td>
                                             </tr>
                                             <?php
                                             }
@@ -105,7 +105,7 @@ require_once("functions/fdepartment.php");
                                             <input type="text" name="dprtAbbr" class="form-control" placeholder="Department/Faculty Shortform" required/>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-primary" style="margin-left: 10px;" name="btnAddDepartment">Add</button>
+                                        <button type="submit" class="btn btn-primary" name="btnAddDepartment">Add</button>
                                 </form>
                             </div>
                         </div>
@@ -114,16 +114,7 @@ require_once("functions/fdepartment.php");
 
             <?php require_once("templates/footer.php") ?>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -136,15 +127,9 @@ require_once("functions/fdepartment.php");
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
         
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
     <script>
-        //***********************************//
-        // For select 2
-        //***********************************//
          $('#zero_config').DataTable();
     </script>
 </body>

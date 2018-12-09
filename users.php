@@ -80,7 +80,7 @@ require_once("functions/fuser.php");
                                                 <td><?= $fetchUserList["usrPhone"] ?></td>
                                                 <td><?= $fetchUserList["usrFac"] ?></td>
                                                 <td><?= $fetchUserList["usrCourse"] ?></td>
-                                                <td><a href="?delete=<?=$fetchUserList["usrID"]?>"><button class="btn btn-danger">DELETE</button></a></td>
+                                                <td><a href="?delete=<?=$fetchUserList["usrID"]?>" class="btn btn-block btn-danger" >DELETE</a></td>
                                             </tr>
                                             <?php
                                             }
@@ -155,23 +155,9 @@ require_once("functions/fuser.php");
                             </div>
                         </div>
                     </div>
-            <footer class="footer text-center">
-                All Rights Reserved by Skyrem Brilliant Services. Designed and Developed by <a href="https://wrappixel.com">Rasyidi Alwee</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+            <?php require_once("templates/footer.php") ?>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -184,14 +170,9 @@ require_once("functions/fuser.php");
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
         
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
     <script>
-        //***********************************//
-        // For select 2
         //***********************************//
          $('#zero_config').DataTable();
     </script>

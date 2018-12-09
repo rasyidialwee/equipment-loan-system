@@ -16,7 +16,6 @@ require_once("functions/flogin.php");
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Administrator</title>
     <link href="dist/css/style.min.css" rel="stylesheet">
-<![endif]-->
 </head>
 
 <body>
@@ -60,16 +59,10 @@ require_once("functions/flogin.php");
             </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- All Required js -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugin js -->
-    <!-- ============================================================== -->
     <script>
 
     $('[data-toggle="tooltip"]').tooltip();

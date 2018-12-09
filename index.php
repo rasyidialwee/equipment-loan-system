@@ -31,18 +31,12 @@ require_once("functions/findex.php");
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <div id="main-wrapper">
            <?php 
            require_once("templates/topbar.php");
@@ -98,6 +92,7 @@ require_once("functions/findex.php");
                                                     </div>
                                                 </div>
                                                 <p>Start Time : <?= date("Y-m-d"); date("H:m:s"); ?></p>
+                                                <input type="hidden" name="lnStaffID" id="lnStaffID" value="<?= $userID ?>">
                                                 <button class="btn btn-block btn-success" id="btnAddLoan" name="btnAddLoan">Save</button>
                                             </form>
                                         </div>
@@ -158,18 +153,6 @@ require_once("functions/findex.php");
                                 <div class="row">
                                     <div class="col-md-12" style="margin: 0px; padding: 0px;">
                                         <div id="viewTools"></div>
-                                        <div class="card card-hover" style="padding: 0px; margin: 2px;">
-                                            <div class="box bg-cyan">
-                                                <div class="row">
-                                                    <div class="col-md-10">
-                                                        <h5 class="text-white text-left">Projector</h5>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <h5 class="text-white text-right">14</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -227,13 +210,14 @@ require_once("functions/findex.php");
         $("#btnAddLoan").click(function (e) {
             e.preventDefault();
             var matricID = $("#usrMatricID").text();
+            var staffID = $("#lnStaffID").val();
             var tool = $("#selectTool").val();
             var quantity = $("#tlQuantity").val();
             var action = "add";
             
             $.ajax({
                 url:"model/action.php",
-                data:{ matricID:matricID, tool:tool, quantity:quantity, action:action},
+                data:{ matricID:matricID, staffID:staffID, tool:tool, quantity:quantity, action:action},
                 method:"POST",
                 success:function(data){
                     fetch_loan();
@@ -264,5 +248,4 @@ require_once("functions/findex.php");
     </script>
 </body>
 
-</html>
 </html>

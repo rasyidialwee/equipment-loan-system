@@ -21,7 +21,7 @@ if(isset($_POST["btnAddAdmin"])){
 			$date = date("Y-m-d");
 			$time = date("H:i:s");
 			$message = "created admin $admName with email $admEmail";
-			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('$date', '$time', '$message', '$userID')");
+			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
 
 			echo "<script>alert('Admin create success')</script>";
 		}else{
@@ -29,7 +29,7 @@ if(isset($_POST["btnAddAdmin"])){
 			$date = date("Y-m-d");
 			$time = date("H:i:s");
 			$message = "fail to create admin $admName with email $admEmail";
-			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('$date', '$time', '$message', '$userID')");
+			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
 
 			echo "<script>alert('Admin create failed')</script>";
 		}
@@ -44,6 +44,6 @@ if(isset($_GET["delete"])){
 	$date = date("Y-m-d");
 	$time = date("H:i:s");
 	$message = "admin with $id deleted";
-	$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('$date', '$time', '$message', '$userID')");
+	$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
 }
 ?>

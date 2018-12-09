@@ -8,12 +8,22 @@ if(isset($_POST["btnAddUser"])){
     $usrFac = mysqli_real_escape_string($conn, $_POST["usrFac"]);
     $usrCourse = mysqli_real_escape_string($conn, $_POST["usrCourse"]);
 
-    $iusr = mysqli_query($conn, "INSERT INTO users (usrMatricID, usrName, usrIC, usrEmail, usrPhone, usrFac, usrCourse) VALUES ('$usrMatricID', '$usrName', '$usrIC', '$usrEmail', '$usrPhone', '$usrFac', '$usrCourse')");
+    $iusr = mysqli_query($conn, "INSERT INTO users (usrMatricID, usrName, usrIC, usrEmail, usrPhone, usrFac, usrCourse) VALUES ('{$usrMatricID}', '{$usrName}', '{$usrIC}', '{$usrEmail}', '{$usrPhone}', '{$usrFac}', '{$usrCourse}')");
 
     if($iusr){
         echo "<script>alert('User Added')</script>";
     }else{
         echo "<script>alert('Add User Failed. Please Try Again')</script>";
+    }
+}
+
+if(isset($_GET["email"])){
+    $status = mysqli_real_escape_string($conn, $_GET["email"]);
+
+    if($status === 'true'){
+        echo "<script>alert('Email Sent Successful')</script>";
+    }else{
+        echo "<script>alert('Email could not be sent. Please contact developer.')</script>";
     }
 }
 ?>

@@ -7,7 +7,7 @@ require_once("functions/floan-information.php");
 
 if(isset($_GET["id"])){
     $id = mysqli_real_escape_string($conn, $_GET["id"]);
-    $getLoanInfo = mysqli_query($conn,"SELECT * FROM loans INNER JOIN users ON loans.lnMatricID=users.usrMatricID INNER JOIN tools ON loans.lnTool=tools.tlID WHERE lnID='$id'");
+    $getLoanInfo = mysqli_query($conn,"SELECT * FROM loans INNER JOIN users ON loans.lnMatricID=users.usrMatricID INNER JOIN tools ON loans.lnTool=tools.tlID WHERE lnID='{$id}' ");
     $fetchLoanInfo = mysqli_fetch_assoc($getLoanInfo);
 }
 ?>
@@ -126,9 +126,7 @@ if(isset($_GET["id"])){
                         </div>
                     </div>
                 </div>
-            <footer class="footer text-center">
-                All Rights Reserved by Skyrem Brilliant Services. Designed and Developed by <a href="https://wrappixel.com">Rasyidi Alwee</a>.
-            </footer>
+            <?php require_once("templates/footer.php") ?>
         </div>
     </div>
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
@@ -143,15 +141,7 @@ if(isset($_GET["id"])){
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script>
-        //***********************************//
-        // For select 2
-        //***********************************//
-        $(".select2").select2();
-    </script>
+    
 </body>
 
 </html>

@@ -88,7 +88,6 @@ require_once("functions/fadmin.php");
                                                     <?
                                                         }
                                                     ?>
-                                                    
                                                     <!-- hide delete button -->
                                                     <?php
                                                     }else{
@@ -98,12 +97,10 @@ require_once("functions/fadmin.php");
                                                     <?php
                                                         }
                                                     ?>
-                                                    
-                                                    <a href="?delete=<?= $fetchAdmin['admID'] ?>"><button class="btn btn-block btn-danger">DELETE</button></a>
+                                                    <a href="?delete=<?= $fetchAdmin['admID'] ?>" class="btn btn-block btn-danger">DELETE</a>
                                                     <?php
                                                     }
                                                     ?>
-                                                    
                                                 </td>
                                             </tr>
                                             <?php
@@ -162,7 +159,7 @@ require_once("functions/fadmin.php");
                                             </select>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-large btn-primary" style="margin-left: 10px;" name="btnAddAdmin">Create</button>
+                                        <button type="submit" class="btn btn-large btn-primary" name="btnAddAdmin">Create</button>
                                     </div>
                                 </form>
                             </div>
@@ -171,16 +168,7 @@ require_once("functions/fadmin.php");
                 </div>
             <?php require_once("templates/footer.php") ?>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -193,15 +181,12 @@ require_once("functions/fadmin.php");
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
     <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
         
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
     <script>
         //***********************************//
         // For select 2
-        //this is the code for select department
         $(".select2").select2();
         //***********************************//
          $('#zero_config').DataTable();
