@@ -16,8 +16,8 @@ if(isset($_POST["btnUpdateTool"])){
 		$time = date("H:i:s");
 		$message = "Tool $tlName updated with reason : ".$updateNote;
 		$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('$date', '$time', '$message', '$userID')");
-		echo "<script>alert('$message')</script>";
-		//header("Location: updateAdmin.php?id=$admID");
+
+		header("Location: updateAdmin.php?id=$admID");
 	}else{
 		//log
 		$date = date("Y-m-d");

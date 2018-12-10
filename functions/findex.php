@@ -11,9 +11,23 @@ if(isset($_POST["btnAddUser"])){
     $iusr = mysqli_query($conn, "INSERT INTO users (usrMatricID, usrName, usrIC, usrEmail, usrPhone, usrFac, usrCourse) VALUES ('{$usrMatricID}', '{$usrName}', '{$usrIC}', '{$usrEmail}', '{$usrPhone}', '{$usrFac}', '{$usrCourse}')");
 
     if($iusr){
-        echo "<script>alert('User Added')</script>";
+        //log
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+        $message = "Add user $usrName Successful";
+        $user = $userID;
+        $ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
+
+        echo "<script>alert('$message')</script>";
     }else{
-        echo "<script>alert('Add User Failed. Please Try Again')</script>";
+        //log
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+        $message = "Add user $usrName Failed";
+        $user = $userID;
+        $ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
+
+        echo "<script>alert('$message')</script>";
     }
 }
 

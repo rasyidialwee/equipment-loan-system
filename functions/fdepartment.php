@@ -5,7 +5,7 @@ if(isset($_POST["btnAddDepartment"])){
 
 
 	//check if faculty existed
-	$checkDB = mysqli_query($conn, "SELECT * FROM departments WHERE dprtName = '$dprtName' OR dprtAbbr = '{$dprtAbbr}' ");
+	$checkDB = mysqli_query($conn, "SELECT * FROM departments WHERE dprtName = '{$dprtName}' OR dprtAbbr = '{$dprtAbbr}' ");
 	$checkResult = mysqli_num_rows($checkDB);
 
 	if ($checkResult > 0) { //the department with name or abbr inserted is exist in database
@@ -16,23 +16,23 @@ if(isset($_POST["btnAddDepartment"])){
 
 		//check if the insertion success
 		if($idprt){
-			echo "<script>alert('Department added Successfully')</script>";
-
 			//log
 			$date = date("Y-m-d");
 			$time = date("H:i:s");
-			$message = "Added a department $dprtName Successful";
+			$message = "Add a department $dprtName Successful";
 			$user = $userID;
 			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
-		}else{
-			echo "<script>alert('Department added Failed. Please Contact website developer')</script>";
 
+			echo "<script>alert('$message')</script>";
+		}else{
 			//log
 			$date = date("Y-m-d");
 			$time = date("H:i:s");
-			$message = "Added a department $dprtName Failed";
+			$message = "Add a department $dprtName Failed";
 			$user = $fetchAdm["admID"];
 			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
+
+			echo "<script>alert('$message')</script>";
 		}
 	}
 }

@@ -20,18 +20,18 @@ if(isset($_POST["btnAddAdmin"])){
 			//log
 			$date = date("Y-m-d");
 			$time = date("H:i:s");
-			$message = "created admin $admName with email $admEmail";
+			$message = "Create admin $admName with email $admEmail Successful";
 			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
 
-			echo "<script>alert('Admin create success')</script>";
+			echo "<script>alert('$message')</script>";
 		}else{
 			//log
 			$date = date("Y-m-d");
 			$time = date("H:i:s");
-			$message = "fail to create admin $admName with email $admEmail";
+			$message = "Create admin $admName with email $admEmail Failed";
 			$ilog = mysqli_query($conn,"INSERT INTO logs (logDate, logTime, logAction, logUser) VALUES ('{$date}', '{$time}', '{$message}', '{$userID}')");
 
-			echo "<script>alert('Admin create failed')</script>";
+			echo "<script>alert('$message')</script>";
 		}
 	}
 }
